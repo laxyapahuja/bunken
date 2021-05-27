@@ -26,7 +26,7 @@ function ebookElementInflator(results) {
     results.forEach(book => {
         string += `<div class="elementList ">
         <div class="left">
-            <a class="actionLinkLite bookPageGenreLink" target="_blank" href="${book.download}">${book.title}</a>
+            <a class="actionLinkLite bookPageGenreLink" target="_blank" href="${book.link}">${book.title}</a>
         </div>
         <div class="right">${book.author}</div>
         <div class="clear"></div>
