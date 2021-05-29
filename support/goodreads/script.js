@@ -1,13 +1,9 @@
-const API = 'https://bunken-api.vercel.app/'
+const API = 'https://api.bunken.tk/'
 
 let ebookElement = document.createElement('div')
 let relatedElement = document.querySelector('[id^="relatedWorks-"]')
 let bookTitle = document.querySelector("[property='og:title']").getAttribute("content");
 let ISBNCode = document.querySelector("[property='books:isbn']").getAttribute("content");
-let searchQuery = ISBNCode
-if (ISBNCode == 'null') {
-    searchQuery = bookTitle
-}
 let initial = false
 
 function insertAfter(referenceNode, newNode) {
@@ -20,30 +16,37 @@ function ebookElementInflator(results) {
 </div>
 <select id="source">
 <option value="libgen">Source: LibGen</option>
+<option value="motw">Source: Memory Of The World</option>
+<option value="libgen/fiction">Source: LibGen Fiction</option>
 <option value="openlibrary">Source: OpenLibrary</option>
 </select> <button onclick="sourceSelect()">Select</button>
-<div class="bigBoxContent containerWithHeaderContent" style="overflow-y: scroll; height: 300px;">`
+<div class="bigBoxContent containerWithHeaderContent" style="overflow-y: scroll; height: 300px;" id="resultsDiv">`
     results.forEach(book => {
-        string += `<div class="elementList ">
-        <div class="left">
+        string += `<div class="elementList">
+        <div>
             <a class="actionLinkLite bookPageGenreLink" target="_blank" href="${book.link}">${book.title}</a>
-        </div>
-        <div class="right">${book.author}</div>
+        </div>`
+        if (book.downloads != null) {
+            book.downloads.forEach(download => {
+                string += `<div><a style="color: blue;" href="${download.link}">${download.format}</a></div>`
+            })
+        }
+        string += `<div>${book.author}</div>
         <div class="clear"></div>
     </div>`
     })
-    string += '</div>`'
+    string += '</div>'
     ebookElement.innerHTML = string
 }
 
 function sourceSelect() {
     let e = document.getElementById("source");
     let value = e.options[e.selectedIndex].value;
-    mainInflator(searchQuery, value)
+    mainInflator(value)
 }
 
-function mainInflator(searchQuery, source) {
-    fetch(`${API}${source}?q=${searchQuery}`).then(response => {
+function mainInflator(source) {
+    fetch(`${API}${source}?title=${bookTitle}&isbn=${ISBNCode}`).then(response => {
         response.json().then(res => {
             ebookElementInflator(res)
             if (!initial) {
@@ -54,4 +57,4 @@ function mainInflator(searchQuery, source) {
     })
 }
 
-mainInflator(searchQuery, 'libgen')
+mainInflator('libgen')

@@ -16,9 +16,9 @@
     }],
     "web_accessible_resources": ["support/goodreads/script.js"],
     "permissions": [
-        "*://libgen.rs/*",
+        "*://libgen.is/*",
         "*://goodreads.com/*",
-        "*://bunken-api.vercel.app/*",
+        "*://api.bunken.tk/*",
         "tabs"
     ]
 }
