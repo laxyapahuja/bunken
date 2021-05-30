@@ -20,7 +20,7 @@ function ebookElementInflator(results) {
 <option value="libgen/fiction">Source: LibGen Fiction</option>
 <option value="openlibrary">Source: OpenLibrary</option>
 </select> <button onclick="sourceSelect()">Select</button>
-<div class="bigBoxContent containerWithHeaderContent" style="overflow-y: scroll; height: 300px;" id="resultsDiv">`
+<div class="bigBoxContent containerWithHeaderContent" style="overflow-y: auto; max-height: 300px;" id="resultsDiv">`
     results.forEach(book => {
         string += `<div class="elementList">
         <div>
