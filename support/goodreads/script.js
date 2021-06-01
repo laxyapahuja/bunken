@@ -5,6 +5,7 @@ let ebookResultsElement;
 let relatedElement = document.querySelector('[id^="relatedWorks-"]')
 let bookTitle = document.querySelector("[property='og:title']").getAttribute("content");
 let ISBNCode = document.querySelector("[property='books:isbn']").getAttribute("content");
+let authorName = document.getElementsByClassName('authorName')[0].innerText
 
 function insertAfter(referenceNode, newNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
@@ -62,6 +63,7 @@ function setupUI() {
                     <option value="libgen">Source: LibGen</option>
                     <option value="motw">Source: Memory Of The World</option>
                     <option value="libgen/fiction">Source: LibGen Fiction</option>
+                    <option value="audiobookbay">Source: AudioBookBay</option>
                     <option value="openlibrary">Source: OpenLibrary</option>
                     </select> 
                     <div id="ebookResults" class="bigBoxContent containerWithHeaderContent" style="overflow-y: auto; max-height: 300px;" id="resultsDiv">Searching...</div>`
@@ -73,7 +75,7 @@ function setupUI() {
 
 function search(source) {
     ebookResultsElement.innerHTML = 'Searching...'
-    fetch(`${API}${source}?title=${encodeURIComponent(bookTitle)}&isbn=${encodeURIComponent(ISBNCode)}`).then(response => {
+    fetch(`${API}${source}?title=${encodeURIComponent(bookTitle)}&isbn=${encodeURIComponent(ISBNCode)}&author=${encodeURIComponent(authorName)}`).then(response => {
         response.json().then(res => {
             ebookElementInflator(res)
         })
