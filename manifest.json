@@ -11,10 +11,10 @@
     },
     "content_scripts": [{
         "matches": ["https://www.goodreads.com/book/show/*"],
-        "js": ["support/goodreads/script.js"],
+        "js": ["support/goodreads/content.js"],
         "run_at": "document_end"
     }],
-    "web_accessible_resources": [{ "resources": ["support/goodreads/script.js"], "matches": ["*://goodreads.com/*"] }],
+    "web_accessible_resources": [{ "resources": ["support/goodreads/script.js"], "matches": ["*://*.goodreads.com/*"] }],
     "permissions": [
         "tabs"
     ],
