@@ -60,15 +60,16 @@ function setupUI() {
                         <h2 class="brownBackground">E-Books</h2>
                     </div>
                     <select id="source" onchange="sourceSelect()">
+                    <option value="libgen/fiction">Source: LibGen Fiction</option>
                     <option value="libgen">Source: LibGen</option>
                     <option value="motw">Source: Memory Of The World</option>
-                    <option value="libgen/fiction">Source: LibGen Fiction</option>
                     <option value="audiobookbay">Source: AudioBookBay</option>
                     <option value="openlibrary">Source: OpenLibrary</option>
                     </select> 
                     <div id="ebookResults" class="bigBoxContent containerWithHeaderContent" style="overflow-y: auto; max-height: 300px;" id="resultsDiv">Searching...</div>`
     ebookElement.innerHTML = template
     ebookElement.className = 'bigBox'
+    ebookElement.innerHTML += `<h4>made by <a target="_blank" href="https://laxya.co">laxyapahuja</a></h4><h4>extension not working? message me on <a target="_blank" href="https://discord.gg/GwDraJjMga">discord</a>.</h4>`
     insertAfter(relatedElement, ebookElement)
     ebookResultsElement = document.getElementById('ebookResults')
 }
@@ -83,4 +84,4 @@ function search(source) {
 }
 
 setupUI();
-search('libgen')
+search('libgen/fiction')
