@@ -1,5 +1,8 @@
 # bunken (文献)
-A chrome extension to download ebooks directly from Goodreads. Fetches ebooks from [LibGen](http://libgen.is), [LibGen Fiction](http://libgen.is/fiction), [Memory Of The World](http://library.memoryoftheworld.org) & [OpenLibrary](https://openlibrary.org).
+
+A chrome extension to download ebooks directly from Goodreads. Fetches ebooks from [LibGen](http://libgen.is), [LibGen Fiction](http://libgen.is/fiction), [Memory Of The World](http://library.memoryoftheworld.org) & [OpenLibrary](https://openlibrary.org). 
+
+⚠️ Users are advised to exercise caution and use this Chrome extension at their own risk, as I disclaim any liability for the outcomes or actions resulting from its utilization.
 
 ![](https://media.discordapp.net/attachments/706928005313855620/847449469381509130/unknown.png?width=970&height=701)
 
